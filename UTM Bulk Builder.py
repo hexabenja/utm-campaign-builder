@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
+
+def generate_utm_url(base_url, utm_params):
+    parsed_url = urlparse(base_url)
+    query_params = dict(parse_qsl(parsed_url.query))
+    query_params.update(utm_params)
+    updated_query = urlencode(query_params)
+    updated_url = urlunparse(parsed_url._replace(query=updated_query))
+    return updated_url
+
+def main():
+    urls = []
+    while True:
+        url = input("Enter website URL (or 'done' to finish): ")
+        if url.lower() == "done":
+            break
+        urls.append(url)
+
+    utm_params = {
+        "utm_source": input("Enter source: "),
+        "utm_medium": input("Enter medium: "),
+        "utm_campaign": input("Enter campaign name: "),
+        "utm_content": input("Enter content: "),
+        "utm_term": input("Enter term: "),
+    }
+
+    # Generate and print UTM-enabled URLs
+    print("\nGenerated UTM-enabled URLs:")
+    for url in urls:
+        utm_url = generate_utm_url(url, utm_params)
+        print(utm_url)
+
+if __name__ == "__main__":
+    main()
+
+
+# In[4]:
+
+
+from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
+
+def generate_utm_url(base_url, utm_params):
+    parsed_url = urlparse(base_url)
+    query_params = dict(parse_qsl(parsed_url.query))
+    query_params.update(utm_params)
+    updated_query = urlencode(query_params)
+    updated_url = urlunparse(parsed_url._replace(query=updated_query))
+    return updated_url
+
+def main():
+    urls_text = input("Paste website URLs (paste URLs here, then 'done' when finished):\n")
+    
+    if urls_text.lower() == "done":
+        print("No URLs provided.")
+        return
+
+    urls = [url.strip() for url in urls_text.strip().split("\n")]
+
+    utm_params = {
+        "utm_source": input("Enter source: "),
+        "utm_medium": input("Enter medium: "),
+        "utm_campaign": input("Enter campaign name: "),
+        "utm_content": input("Enter content: "),
+        "utm_term": input("Enter term: "),
+    }
+
+    # Generate and print UTM-enabled URLs with sequential numbers
+    print("\nGenerated UTM-enabled URLs:")
+    for i, url in enumerate(urls, start=1):
+        utm_url = generate_utm_url(url, utm_params)
+        print(f"{i}. {url} => {utm_url}")
+
+if __name__ == "__main__":
+    main()
+
+
+# In[ ]:
+
+
+
+
