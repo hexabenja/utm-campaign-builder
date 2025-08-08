@@ -6,10 +6,16 @@
 
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 
+   
+
 def generate_utm_url(base_url, utm_params):
     parsed_url = urlparse(base_url)
     query_params = dict(parse_qsl(parsed_url.query))
-    query_params.update(utm_params)
+
+    # NUEVO: Filtrar solo parámetros UTM que no estén vacíos
+    filtered_utm_params = {k: v for k, v in utm_params.items() if v.strip()}
+
+    query_params.update(filtered_utm_params) #Se reemplaza por valor NUEVO
     updated_query = urlencode(query_params)
     updated_url = urlunparse(parsed_url._replace(query=updated_query))
     return updated_url
@@ -19,7 +25,7 @@ def main():
     while True:
         url = input("Enter website URL (or 'done' to finish): ")
         if url.lower() == "done":
-            break
+            break #Detener sección URLS
         urls.append(url)
 
     utm_params = {
@@ -30,7 +36,7 @@ def main():
         "utm_term": input("Enter term: "),
     }
 
-    # Generate and print UTM-enabled URLs
+    # Generar y printear URLs con UTM
     print("\nGenerated UTM-enabled URLs:")
     for url in urls:
         utm_url = generate_utm_url(url, utm_params)
@@ -48,7 +54,11 @@ from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 def generate_utm_url(base_url, utm_params):
     parsed_url = urlparse(base_url)
     query_params = dict(parse_qsl(parsed_url.query))
-    query_params.update(utm_params)
+
+    # NUEVO: Filtrar solo parámetros UTM que no estén vacíos
+    filtered_utm_params = {k: v for k, v in utm_params.items() if v.strip()}
+
+    query_params.update(filtered_utm_param) #Se reemplaza por valor NUEVO
     updated_query = urlencode(query_params)
     updated_url = urlunparse(parsed_url._replace(query=updated_query))
     return updated_url
