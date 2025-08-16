@@ -1,7 +1,7 @@
 
 # UTM Builder   
 
-Programa desarrollado para ambito laboral. En el sitio web de limatco.cl requerimos de utilizar UTMs para segmentar y hacer seguimiento de la actividad del tráfico
+Programa desarrollado para ambito laboral. En el enlaces internos se requiere de utilizar UTMs para segmentar y hacer seguimiento de la actividad del tráfico a través de Google Analytics, Looker Studio o algún otro pixel.
 
 
 ## Optimizaciones
