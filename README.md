@@ -1,15 +1,16 @@
 
 # UTM Builder   
 
-Programa desarrollado para ambito laboral. En el enlaces internos se requiere de utilizar UTMs para segmentar y hacer seguimiento de la actividad del tráfico a través de Google Analytics, Looker Studio o algún otro pixel.
+Program developed for workplace. Internal links require the use of UTMs to segment and track traffic activity through Google Analytics, Looker Studio, or some other pixel..
 
 
 ## Optimizaciones
 
-En este proyecto fork se realizó la mejora de descartar aquellos queries vacios, de esta manera se puede limpiar la url en especial para enlaces internos ya que no requieren de utm_source.
+In this fork project, an improvement was made to discard empty queries, thus cleaning up the URL, especially for internal links, since they do not require utm_source.
 
-Además de traducir el script del inglés al español.
 
 ## Cómo ejecutar?
 
-Ejecutar archivo .exe
+Execute the .py file using Python's Compiler or use another terminal like Online Compiler for Python
+
+The program is compatible with .exe converting the .py file to .exe using PyInstaller library
